@@ -29,3 +29,4 @@ else:
 x = 1
 if x:
     print(True)
+# 只要x为非零数值、非空字符串、非空list等，就判断为True，否则为False
