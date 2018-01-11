@@ -64,3 +64,59 @@ def calc(*numbers):
 print(calc(1,2,3))
 # 如果已经有一个list或者tuple，要调用一个可变参数怎么办？
 print(calc(*[3,4]))
+
+# 4、关键字参数，容许传入任意个key-value形式参数，在方法内部被自动组装成一个tuple
+def person(name,age,**kw):
+    print('name:',name,'age:',age,'othor:',kw)
+
+person('Tom',23,city='beijing',sex='F')
+person('zhaosi',45)
+# 和可变参数类似，可以先组装一dict，然后把dict作为关键字参数传给方法
+extra = {'city': 'Beijing', 'job': 'Engineer'}
+person('Jeck',23,**extra)
+
+# 5、命名关键字参数，对于关键字参数，调用者可以传入任意不受限制的关键字参数，
+# 如果希望限制关键字参数的名字，就可以使用命名关键字参数，例如：只接受city和job作为关键字参数
+def person(name,age,*,city,job): # 必须以key-value的形式传入city和job
+    print('name:',name,'age:',age,'city:',city,'job:',job)
+person('Jerry',23,city='TianJin',job='software engineer')
+
+# 如果函数的参数已经有可变参数，那么命名关键字参数的*可以省略
+def person(name,age,*args,city,job):
+    print(name,age,*args,city,job)
+person('NEW',23,'Hello','world',city='ShangHai',job='software engineer')
+
+# 参数组合：各种形式的参数可组合使用，但顺序必须是：位置参数、默认参数、可变参数、命名关键字参数、关键字参数
+def f1(a,b,*args,**kw):
+    print(a,b,args,kw)
+def f2(a,b,c=3,*args,d,**kw):
+    print(a,b,c,args,d,kw)
+f1(1,2,*[3,4],name='zhangsan',age=23,city='beijing')
+f2('left','right',4,'width','height',d='value')
+
+# 练习：计算乘积
+def product(x,*args):
+    r = x
+    for i in args:
+        r *= i
+    return  r
+
+print('product(5) =', product(5))
+print('product(5, 6) =', product(5, 6))
+print('product(5, 6, 7) =', product(5, 6, 7))
+print('product(5, 6, 7, 9) =', product(5, 6, 7, 9))
+if product(5) != 5:
+    print('测试失败!')
+elif product(5, 6) != 30:
+    print('测试失败!')
+elif product(5, 6, 7) != 210:
+    print('测试失败!')
+elif product(5, 6, 7, 9) != 1890:
+    print('测试失败!')
+else:
+    try:
+        product()
+        print('测试失败!')
+    except TypeError:
+        print('测试成功!')
+
