@@ -1,3 +1,6 @@
+
+# #########################       List简介          ################################
+
 # list是python内置的一种数据类型，特点：有序集合，可以随时添加和删除元素
 classmates = ['Tom','Jerry','zhangsan']
 print(classmates)
@@ -15,28 +18,55 @@ print(classmates[-1])
 # 依次类推，可以获取倒数第二个、第三个....
 print(classmates[-2])
 
-# 向list末尾追加元素:append
-classmates.append('Lisi')
-print(classmates)
-
-# 向指定位置插入元素:insert
-classmates.insert(1,'唐僧')
-print(classmates)
-
-# 删除list末尾元素:pop
-classmates.pop()
-print(classmates)
-# 删除指定位置上的元素：pop(index)
-classmates.pop(1)
-print(classmates)
-
-# 替换某个位置上的元素，可以直接其赋值
-classmates[1] = '猪八戒'
-print(classmates)
-
 # list里面的数据类型也可以不同
 L = [2,'xxx',3]
 print(L)
+
+# #########################       1、添加元素          ################################
+
+# 1.1、list.append(ele)：向list末尾追加元素
+classmates.append('Lisi')
+print(classmates)
+
+# 1.2、list.insert(index,ele):向指定位置插入元素
+classmates.insert(1,'唐僧')
+print(classmates)
+
+# 1.3、list1.extend(list2):list1继承list2中内容
+names = ['杨过','小龙女']
+classmates.extend(names)
+print('classmates:',classmates)
+
+# #########################       2、删除元素          ################################
+
+# 2.1、list.pop():删除list末尾元素，返回值为被删除的元素
+classmates.pop()
+print(classmates)
+
+# 2.2.1、list.pop(index):根据下标删除(一)
+classmates.pop(1)
+print(classmates)
+
+# 2.2.1、del list[index]:根据下标删除(二)
+del classmates[1]
+print(classmates)
+
+# 2.3、list.remove(ele):删除相应的元素
+classmates.remove('Tom')
+print(classmates)
+
+# #########################       3、修改元素          ################################
+
+# 替换某个位置上的元素，可以直接对其赋值
+classmates[1] = '猪八戒'
+print(classmates)
+
+# #########################       4、判断元素是否在list中          #####################
+# ele in list 返回布尔值(not in)
+if '猪八戒' in classmates:
+    print('猪八戒在list中')
+
+# #########################       元组简介          ##################################
 
 # 另一种有序列表：元组，特点：与list相似，不同之处在于元组一旦初始化后就不能再修改(元素的指向不能修改)
 classmates = ('Bob','Michael','Tracy')

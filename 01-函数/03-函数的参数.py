@@ -25,7 +25,7 @@ def enroll(name,gender,age = 6,city = 'beijing'):
     print('city:',city)
 # 有多个默认参数时，调用的时候，既可以按顺序提供默认参数，比如调用enroll('Bob', 'M', 7)
 # 也可以不按顺序提供部分默认参数。当不按顺序提供部分默认参数时，需要把参数名写上。比如调用enroll('Adam', 'M', city='Tianjin')
-#　enroll('zhangsan','男')
+#　enroll('zhangsan','男')SSSSW
 #　enroll('li','女',7)
 enroll('Tom','猫',city='CCTV-1')
 
