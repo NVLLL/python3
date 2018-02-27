@@ -35,4 +35,32 @@ class MyObj(object):
 myObj = MyObj()
 print(len(myObj)) # 100
 
-# 2、getattr()、setattr()、hasattr()
+# 2、getattr()、setattr()、hasattr() 操作对象的属性
+class MyObject(object):
+
+    def __init__(self):
+        self.x = 9
+
+    def power(self):
+        return self.x * self.x
+
+obj = MyObject()
+
+# hasattr(obj,name) 判断该对象是否具有某个属性
+print(hasattr(obj,'x'))         # True
+print(hasattr(obj,'power'))     # True
+print(hasattr(obj,'y'))         # False
+
+# setattr(obj,name,value) 设置属性
+setattr(obj,'y',10)
+print(hasattr(obj,'y'))         # True
+
+# getattr(obj,name,default) 获取属性
+p = getattr(obj,'power')
+print(type(p))  # <class 'method'>
+print(p())      # 81
+# 如果获取的属性不存在，会抛出AttributeError的错误
+# v = getattr(obj,'z')
+# 可以传入一个default参数，如果属性不存在，就返回该值
+v = getattr(obj,'z',404)
+print(v)

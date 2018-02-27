@@ -20,15 +20,15 @@ class Student(object):
 
     # 打印成绩
     def print_score(self):
-        print('%s的成绩是:%d' % (self.name,self.score))
+        print('%s的成绩是:%d' % (self.__name,self.__score))
 
     # 获取成绩等级
     def get_grade(self):
-        if self.score > 90:
+        if self.__score > 90:
             print('A')
-        elif self.score > 70:
+        elif self.__score > 70:
             print('B')
-        elif self.score > 60:
+        elif self.__score > 60:
             print('C')
         else:
             print('D')
@@ -39,3 +39,7 @@ if __name__ == '__main__':
     # print(stu.__name) 外部不能直接访问私有属性
     stu.print_score()
     stu.get_grade()
+
+    # 我们也可以为对象添加其他属性：
+    stu.sex = 'M'
+    print(stu.sex)
