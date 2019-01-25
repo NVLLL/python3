@@ -13,6 +13,7 @@ for i in range(1,11):
 # 方法二：列表生成式
 L = [x * x for x in range(1,11)]
 # print(L)
+print(type(L))  # <class 'list'>
 
 # 练习：
 # 1、筛选出仅偶数的平方

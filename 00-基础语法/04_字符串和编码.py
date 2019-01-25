@@ -46,7 +46,11 @@ print('成绩提高了 %.1f %%' % r)
 
 # ###################         字符串切片          ###################################
 
-# str[起始位置:结束位置:步长] (包头不包尾)
+"""
+    str[起始位置:结束位置:步长] (包头不包尾):
+    - 步长 > 0: 从左到右，如果起始位置在结束位置的右边结果为空
+      步长 < 0: 从右到左，如果起始位置在结果位置的左边结果为空
+"""
 name = 'abcdefABCDEF'
 
 # 不指定步长，默认为1
@@ -63,20 +67,20 @@ print(name[3:-2:2]) # dfBD
 
 # ################           字符串常用函数        ###################################
 
-# 1、myStr.find(str) | myStr.rfind(str)
+# 1、myStr.find(str, start=0, end=len(myStr)) | myStr.rfind(str, start=0, end=len(myStr))
 # find,从左向右查找str在myStr的位置(下标)，如果没有找到返回-1
 # rfind,从右向左找...
 str = 'hello world itcast heima itcastxxxxppc'
 print(str.find('itcast'))
 print(str.rfind('itcast'))
 
-# 2、myStr.index(str) | myStr.rindex(str)
+# 2、myStr.index(str, start=0, end=len(myStr)) | myStr.rindex(str, start=0, end=len(myStr))
 # 作用与find相同，不同之处在于，如果没有找到抛出异常
 print(str.index('itcast'))
 print(str.rindex('itcast'))
 # print(str.index('java'))
 
-# 3、myStr.count(str,start=0,end=len(myStr))
+# 3、myStr.count(str, start=0, end=len(myStr))
 # 统计字符串str在start和end之间在myStr中出现的次数
 print(str.count('itcast'))
 print(str.count('itcast',0,10)) # 0
@@ -132,12 +136,12 @@ print(str.center(50))
 
 # 15、myStr.lstrip()
 # 去掉myStr左空格
-s1 = '   xxx'
+s1 = '   xxx   '
 print(s1.lstrip())
 
 # 16、myStr.rstrip()
 # 去掉myStr右空格
-s2 = '   xxxxx    ';
+s2 = '   xxxxx    '
 print(s2.rstrip())
 
 # 17、myStr.strip()
@@ -158,11 +162,12 @@ s1 = 'asfas\nfsadfsd\newrwe\n'
 print(s1.splitlines())  # ['asfas', 'fsadfsd', 'ewrwe']
 
 # 21、myStr.isalpha()
-# 判断myStr所有字符是否为字母
+# 判断myStr字符串是否全部为字符(不含数字、特殊符号)
 s1 = 'dsf中国'
 print(s1.isalpha()) # True
 s1 = '234343aaaa'
 print(s1.isalpha()) # False
+print('@abc'.isalpha())
 
 # 22、mystr.isdigit()
 # 判断myStr所有字符是否都是数字

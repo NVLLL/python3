@@ -5,19 +5,21 @@ def now():
     return time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
 
 # 如果我们要增强now函数功能，比如，在函数调用前后自动打印日志，但又不希望修改now()函数的定义，这种在代码运行期间动态增加功能的方式，称之为“装饰器”（Decorator）。
+
+# 1、装饰器不需要传入参数：将使用装饰器的函数作为参数传入，返回增强后的函数重新赋值给使用装饰器的函数， now=log(now)
 def log(func):
     def wrapper(*args,**kwargs):
         print('call %s()' % func.__name__ )
         return func(*args,**kwargs)
     return wrapper
 
-# 使用Python的@符号(语法糖)，将decorator置于函数的定义处，相当于执行了now=log(now)
+# 使用Python的@符号(语法糖)，将decorator置于函数的定义处
 @log
 def now():
     return time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
 # print(now())
 
-# 如果装饰器本身也需要传入参数：
+# 2、如果装饰器本身也需要传入参数：多一层专门用来接受装饰器参数的函数， now = log('exeute')(now)
 def log(text):
     def decorator(func):
         def wrapper(*args,**kwargs):
@@ -90,3 +92,18 @@ elif s != 7986:
     print('测试失败!')
 
 # 练习2：请编写一个decorator，能在函数调用的前后打印出'begin call'和'end call'的日志。
+def tips(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kw):
+        print('begin call')
+        result = func(*args, **kw)
+        print('end call')
+        return result
+    return wrapper
+
+@tips
+def test():
+    print('test....')
+
+test()
+print(test.__name__)

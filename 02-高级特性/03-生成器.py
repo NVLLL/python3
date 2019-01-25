@@ -69,8 +69,8 @@ def triangles():
     pass
 
 # Iterator和Iterable的区别：
-# - Iterable，可迭代的对象，可以使用for...in进行迭代，如str、list、set等，可以通过isinstance(o,Iterable)判断o是否为可迭代对象
-# - Iterator，迭代器对象，不仅可以使用for...in进行迭代，还可以使用next()函数获取下一个值，直到最后抛出StopIteration异常，
+# - Iterable，可迭代的对象，可以使用for...in进行迭代，如str、list、set、generator等，可以通过isinstance(o,Iterable)判断o是否为可迭代对象
+# - Iterator，迭代器对象，不仅可以使用for...in进行迭代，还可以使用next()函数获取下一个值，如generator。直到最后抛出StopIteration异常，
 #   可以通过isinstance(o,Iterator)判断o是否为可迭代对象，生成器都是Iterator对象，但是str、list等不属于Iterator
 print(isinstance('abc',Iterable))  # True
 print(isinstance('abc',Iterator))  # False

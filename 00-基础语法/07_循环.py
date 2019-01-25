@@ -6,7 +6,7 @@ for name in names:
 else:  # python中容许在for循环后面跟else，在循环完成之后执行else中语句，如果循环被break，则不会执行
     print('end!')
 
-# range(n):生成0~n-1的序列，再通过list()可以转为list
+# range(n):生成[0,n)的序列，再通过list()可以转为list
 print(list(range(5))) #[0, 1, 2, 3, 4]
 # 示例：计算1~100之和
 sum = 0

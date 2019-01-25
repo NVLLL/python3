@@ -32,7 +32,7 @@ print(classmates)
 classmates.insert(1,'唐僧')
 print(classmates)
 
-# 1.3、list1.extend(list2):list1继承list2中内容
+# 1.3、list1.extend(list2):将list2元素，逐个添加到list1
 names = ['杨过','小龙女']
 classmates.extend(names)
 print('classmates:',classmates)
@@ -61,10 +61,16 @@ print(classmates)
 classmates[1] = '猪八戒'
 print(classmates)
 
-# #########################       4、判断元素是否在list中          #####################
+# #########################       4、查找元素          ##############################
 # ele in list 返回布尔值(not in)
 if '猪八戒' in classmates:
     print('猪八戒在list中')
+
+a = ['a','a','b','c']
+# index(ele, start=None, stop=None): 查询元素在list中的索引，如果元素不存在会抛出异常
+print(a.index('a'))  # 0
+
+# count(ele): 统计元素在list中出现的次数
 
 # #########################       元组简介          ##################################
 
