@@ -1,8 +1,13 @@
 from enum import Enum,unique
-# 枚举用来定义常量
 
 # 定义枚举方式一：
 Month = Enum('Month',('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'))
+
+# 枚举所有成员
+for item in Month:
+    print(item)         # Month.Jan...
+    print(item.name)    # Jan...
+    print(item.value)   # 1... 通过Enum构造生成的枚举，其枚举项的值是由系统生成的int类型常量，默认从1开始计数
 
 # 定义枚举方式二：
 # - 枚举成员不容许重复
@@ -17,12 +22,6 @@ class WeekDay(Enum):
     Thu = 4
     Fri = 5
     Sat = 6
-
-# 枚举所有成员
-for item in Month:
-    print(item)         # Month.Jan...
-    print(item.name)    # Jan...
-    print(item.value)   # 1... 通过Enum构造生成的枚举，其枚举项的值是由系统生成的int类型常量，默认从1开始计数
 
 # 枚举WeekDay的所有成员
 for name,member in WeekDay.__members__.items():

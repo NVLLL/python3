@@ -7,7 +7,7 @@ class Student(object):
             4、self类似java的this，表示当前实例对象引用，不需要手动传入，Python会自动传入。
     """
     def __init__(self,name,score):
-        # 如果内部属性不想让外部直接访问，可以在属性前面加上两个下划线"__"
+        # 实例属性
         self.__name = name
         self.__score = score
         print("call __init__")
@@ -20,21 +20,12 @@ class Student(object):
     def __str__(self):
         return "姓名：%s, 分数: %.2f" % (self.__name, self.__score)
 
+    """
+        __del__:
+            当删除对象时，python解释器会默认调⽤ __del__ ⽅法
+    """
     def __del__(self):
         print("call __del__")
-
-    # 对外提供getter/setter
-    def get_name(self):
-        return self.__name
-
-    def set_name(self,name):
-        self.__name = name
-
-    def get_score(self):
-        return self.__score
-
-    def set_score(self,score):
-        self.__score = score
 
     # 打印成绩
     def print_score(self):

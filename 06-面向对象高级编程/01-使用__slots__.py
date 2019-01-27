@@ -1,42 +1,40 @@
-from types import MethodType
 class Student(object):
+    __slots__ = ('name', 'age') #  slot: 插槽
     pass
 
-def _set_age(self,age):
-    self.age = age
+"""
+    1、在Python中可以动态的为对象添加任何属性，通过__slots__可以限定[实例对象]只能添加指定属性
+    2、__slots__定义的属性只对当前类的实例对象有效，对子类不起作用
+    3、如果子类有__slots__属性，其范围为：子类__slots__ 加上 父类__slots__
+"""
+class ManStu(Student):
+    pass
 
-s1 = Student()
-s1.set_age = MethodType(_set_age,s1)    # 给s1实例对象绑定一个方法，不能使用：s1.set_age = _set_age 这种方式给实例对象绑定方法
-s1.set_age(23)                          # 调用绑定的方法
-print(s1.age)
+class FemaleStu(Student):
+    __slots__ = ('score')
 
-s2 = Student()
-# s2.set_age(34)                        # 测试抛出异常，发现其他对象并没有set_age方法
-# print(s2.age)
+if __name__ == '__main__':
+    def getName():
+        pass
 
-# 如果想给所有实例对象绑定方法，可以给class绑定方法：
-def _set_score(self,score):
-    self.score = score
+    s = Student()
+    # 实例对象上不可以添加__slots__限定以外的属性
+    # s.score = 98
+    # print(s.score)        # AttributeError
+    # s.getName = getName   # AttributeError
 
-Student.set_score = _set_score          # 为class绑定一个方法
-s1.set_score(33)                        # 所有实例对象都可以使用
-s2.set_score(44)
-print(s1.score)
-print(s2.score)
+    # 类对象上可以添加
+    Student.score = 98
+    print(Student.score)
 
-# Python中可以通过__slots__属性限制实例对象的属性，比如只容许对Student的实例添加name和age属性
-class Stu(object):
-    __slots__=('name','age')
-    # score = 67                        # 可以给class定义score属性
+    # 父类__slots__对子类没有影响
+    man = ManStu()
+    man.score = 98
+    print(man.score)
 
-    # def __init__(self,score):         # 通过__init__方法同样不能给实例对象定义score属性
-    #     self.score = score
-
-stu = Stu()
-stu.name = 'zhangsan'
-stu.age = 12
-# stu.score = 99                        # 异常：AttributeError
-# print(stu.score)
-
-# 使用__slots__注意：其只能限制当前类的实例对象属性，对继承的子类不起做作用
-
+    f = FemaleStu()
+    f.name = 'limei'
+    f.age = 23
+    f.score = 98
+    # f.addr = 'earth'  # AttributeError
+    print(f)

@@ -1,3 +1,4 @@
+import logging
 # try...except...finally 处理异常
 try:
     print('try...')
@@ -16,7 +17,8 @@ try:
     r = 10 / int('2')
     print('result:', r)
 except ValueError as e:
-    print('ValueError:', e)
+    # 利用logging模块打印异常堆栈消息
+    logging.exception(e)
 except ZeroDivisionError as e:
     print('ZeroDivisionError:', e)
 else:
